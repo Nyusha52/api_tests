@@ -1,22 +1,13 @@
-from faker import Faker
-import attr
-
-from fixtures.base import BaseClass
-
-fake = Faker()
+from fixtures.auth.api import LogIn
+from fixtures.register.api import Register
+from fixtures.requests import Client
+from fixtures.userinfo.api import Userinfo
 
 
-@attr.s
-class RegisterUser(BaseClass):
-    username: str = attr.ib(default=None)
-    password: str = attr.ib(default=None)
-
-    @staticmethod
-    def random():
-        return RegisterUser(username=fake.email(), password=fake.password())
-
-
-@attr.s
-class RegisterUserResponse:
-    message: str = attr.ib()
-    uuid: int = attr.ib()
+class StoreApp:
+    def __init__(self, url):
+        self.url = url
+        self.client = Client
+        self.register = Register(self)
+        self.auth = LogIn(self)
+        self.userinfo = Userinfo(self)
