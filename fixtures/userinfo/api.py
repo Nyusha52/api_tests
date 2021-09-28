@@ -23,3 +23,18 @@ class Userinfo(Validator):
             headers=header
         )
         return self.structure(response, type_response=type_response)
+
+    EDIT_USERINFO = "/user_info/{}"
+
+    @log( "edit user info" )
+    def edit_user_info(self, user_id: int, data: UserInfo, header=None, type_response=None) -> Response:
+        """
+        https://app.swaggerhub.com/apis-docs/berpress/flask-rest-api/1.0.0#/userInfo/userInfoAdd # noqa
+        """
+        response = self.app.client.request(
+            method="PUT",
+            url=f"{self.app.url}{self.EDIT_USERINFO.format(user_id)}",
+            json=data.to_dict(),
+            headers=header
+        )
+        return self.structure(response, type_response=type_response)

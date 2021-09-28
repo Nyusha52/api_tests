@@ -2,6 +2,7 @@ from faker import Faker
 import attr
 
 from fixtures.base import BaseClass
+from fixtures.userinfo.model import UserInfo
 
 fake = Faker()
 
@@ -22,6 +23,7 @@ class AuthUserResponse:
 
 
 @attr.s
-class AuthUserType:
-    header: dict = attr.ib()
-    uuid: int = attr.ib()
+class UserType:
+    header: dict = attr.ib(default=None)
+    uuid: int = attr.ib(default=None)
+    user_data: UserInfo = attr.ib(default=None)

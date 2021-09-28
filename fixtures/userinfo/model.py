@@ -26,6 +26,9 @@ class UserInfo(BaseClass):
 
 
 @attr.s
-class RegisterUserResponse:
+class UserInfoResponse:
     message: str = attr.ib()
-    uuid: int = attr.ib()
+
+@attr.s
+class UpdateUserInfoResponse:
+    message: str = attr.ib()
