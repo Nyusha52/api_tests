@@ -24,7 +24,6 @@ class UserInfo(BaseClass):
         address = Address(city=fake.city(), street=fake.street_name(), home_number=fake.building_number())
         return UserInfo(phone=fake.phone_number(), email=fake.email(), address=address)
 
-
 @attr.s
 class UserInfoResponse:
     message: str = attr.ib()
