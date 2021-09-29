@@ -43,7 +43,7 @@ class TestEditUserInfo:
         res = app.userinfo.edit_user_info(
             user_id=uuid,
             data=data,
-            type_response=UpdateUserInfoResponse,
+            type_response=None,
             header=user_info.header,
         )
         assert res.status_code == 404
